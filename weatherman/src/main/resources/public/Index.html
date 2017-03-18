@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app="weatherman-module">
+<head>
+	<meta charset="UTF-8">
+	<title>Weatherman Report</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+	<script src="js/app.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"><link>
+</head>
+<body ng-controller="MainController">
+		  
+	<div class="page-header">
+        <h1>Get Weather Information</h1>
+      </div>
+    <div class="container">
+    	<div>
+			<form name="searchweatherform" ng-submit="getWeather()">
+				<input type="text" ng-model="city" placeholder="Enter City"/>
+				<label>
+					<input type="radio" ng-model="unit" value="metric"/>Celcius
+				</label>
+				<label>
+					<input type="radio" ng-model="unit" value="imperial" checked="checked"/>Fahrenheit
+				</label>
+				<input type="submit" value="Submit" class="btn btn-success"/>
+			</form>
+		</div>
+		<div class="row" ng-show="response">
+        <div class="col-sm-4">
+          <div class="panel panel-success">
+            <div class="panel-heading">
+              <h3 class="panel-title">Today's weather for {{response.name}},{{response.sys.country}}</h3>
+            </div>
+            <div class="panel-body">
+              	Current Temperature is : {{response.main.temp}} <br/>
+				Maximum Temperature is: {{response.main.temp_max}} <br/>
+				Minimum Temperature is: {{response.main.temp_min}}
+            </div>
+          </div>
+          </div>
+         </div>
+		<div >
+    </div>
+</body>
+</html>
