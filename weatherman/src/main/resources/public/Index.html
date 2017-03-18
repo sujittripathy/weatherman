@@ -15,7 +15,10 @@
     <div class="container">
     	<div>
 			<form name="searchweatherform" ng-submit="getWeather()">
-				<input type="text" ng-model="city" placeholder="Enter City"/>
+				<div class="alert alert-warning" role="alert">
+					City can't be empty
+				</div>
+				<input type="text" ng-model="city" placeholder="Enter City" required="required"/>
 				<label>
 					<input type="radio" ng-model="unit" value="metric"/>Celcius
 				</label>

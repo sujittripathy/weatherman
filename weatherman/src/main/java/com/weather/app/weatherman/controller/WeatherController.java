@@ -30,7 +30,9 @@ public class WeatherController {
 	@Bean
 	public RestTemplate getRestTemplate(){
 		return new RestTemplate();
-	}
+	} 
+	
+	
 	
 	@RequestMapping("/v1/zip/{zip}/{unit}")
 	public Weather getWeatherByZip(@PathVariable("zip") String zip,@PathVariable("unit") String unit){
