@@ -7,28 +7,26 @@
 	<script src="js/app.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"><link>
 </head>
-<body ng-controller="MainController">
-		  
-	<div class="page-header">
-        <h1>Get Weather Information</h1>
-      </div>
-    <div class="container">
-    	<div>
-			<form name="searchweatherform" ng-submit="getWeather()">
-				<div class="alert alert-warning" role="alert">
-					City can't be empty
+<body>
+	<h1>Get Weather Information</h1>
+    <div class="container main-content" ng-controller="MainController">
+			<form name="form" novalidate ng-submit="onSubmit(form.$valid)">
+				<div class="form-group" ng-class="{'has-error': form.city.$valid}">
+					<label for="city">Enter City</label>
+					<input type="text" name="city" id="city" ng-model="formModel.city" required/>
 				</div>
-				<input type="text" ng-model="city" placeholder="Enter City" required="required"/>
-				<label>
-					<input type="radio" ng-model="unit" value="metric"/>Celcius
-				</label>
-				<label>
-					<input type="radio" ng-model="unit" value="imperial" checked="checked"/>Fahrenheit
-				</label>
-				<input type="submit" value="Submit" class="btn btn-success"/>
+				<div class="form-group">
+					<label for="city">Temperature</label>
+					<select name="unit" id="unit" ng-model="formModel.unit" required="required">
+						<option value="">Please choose one</option>
+						<option value="metric">Celcius</option>
+						<option value="imperial" selected>Fahrenheit</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<input type="submit" value="Submit" class="btn btn-primary"/>
+				</div>
 			</form>
-		</div>
-		<div class="row" ng-show="response">
         <div class="col-sm-4">
           <div class="panel panel-success">
             <div class="panel-heading">
